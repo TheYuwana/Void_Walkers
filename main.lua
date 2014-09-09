@@ -40,6 +40,7 @@ layer:setPartition(partition)
 -- Global vars
 ----------------------------
 test = {}
+text = {}
 
 require("helpers/textfield")
 require("helpers/button")

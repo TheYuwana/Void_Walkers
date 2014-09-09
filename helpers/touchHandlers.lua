@@ -14,7 +14,7 @@ if MOAIInputMgr.device.pointer then
       else
         -- Mouse Up
         touch(MOAIInputMgr.device.pointer:getLoc())
-        --test:changeTexture("Assets/img/Red_brick.png")
+        test:changeTexture("Assets/img/Red_brick.png")
         --layer:removeProp(textBox["test"])
         
       end
