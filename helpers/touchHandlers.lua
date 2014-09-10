@@ -9,13 +9,11 @@ if MOAIInputMgr.device.pointer then
         
       if(isMouseDown) then
         
-        --textBox["test"]:setString("MouseDown!")
+        -- Mouse down 
         
       else
         -- Mouse Up
         touch(MOAIInputMgr.device.pointer:getLoc())
-        test:changeTexture("Assets/img/Red_brick.png")
-        --layer:removeProp(textBox["test"])
         
       end
       
@@ -43,7 +41,8 @@ function touch(x, y)
     local touchedProp = partition:propForPoint(layer:wndToWorld(x, y))
     
     if(touchedProp == test:getProp()) then
-      print("Touched!")
+      
+      view:slide()
+      
     end
-  
 end

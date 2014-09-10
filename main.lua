@@ -9,13 +9,15 @@ local screenHeight = 480
 deviceScreenWidth  = MOAIEnvironment.horizontalResolution or screenWidth
 deviceScreenHeight = MOAIEnvironment.verticalResolution or screenHeight
 
+print("ScreenWidth: "..deviceScreenWidth.." and ScreenHeight: "..deviceScreenHeight)
+
 -- Open a window for testing, used on pc, skipped when on mobile
 MOAISim.openWindow(gameName, deviceScreenWidth, deviceScreenHeight)
 
 -- Making the viewport
 viewport = MOAIViewport.new()
 viewport:setSize(deviceScreenWidth, deviceScreenHeight)
-viewport:setScale(screenWidth, screenHeight)
+viewport:setScale(deviceScreenWidth*2, deviceScreenHeight*2)
 
 -- Adding layers
 layer = MOAILayer2D.new()
@@ -41,8 +43,10 @@ layer:setPartition(partition)
 ----------------------------
 test = {}
 text = {}
+view = {}
 
-require("helpers/textfield")
+require("helpers/view")
 require("helpers/button")
+require("helpers/view")
 require("helpers/touchHandlers")
 require("game")

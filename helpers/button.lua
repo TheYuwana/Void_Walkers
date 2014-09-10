@@ -7,17 +7,14 @@ Button.__index = Button
 ----------------------------
 -- Constructor
 ----------------------------
-function Button.create(x, y, w, h, imgSource, index)
+function Button.create(x, y, imgSource)
 
   local btn = {}
   setmetatable(btn, Button)
   
   btn._x = x
   btn._y = y
-  btn._width = w
-  btn._height = h
   btn._imgSource = imgSource
-  btn._index = index
   
   btn._sprite = MOAIGfxQuad2D.new()
   btn._prop =  MOAIProp2D.new()
@@ -35,14 +32,19 @@ end
 --Create button (Internal function)
 function Button:make()
   
+  --Texture
+  local texture = MOAIImage.new()
+  texture:load(self._imgSource)
+  local w, h = texture:getSize()
+  
   --Sprite
-  self._sprite:setTexture(self._imgSource)
-  self._sprite:setRect(self._x, self._y, self._x + self._width, self._y + self._height)
+  self._sprite:setTexture(texture)
+  self._sprite:setRect(-w, -h, w, h)
   
   --Prop
   self._prop:setDeck(self._sprite)
+  self._prop:setLoc(self._x, self._y)
   self._prop:setPriority(1)
-  self._prop:setIndex(self._index)
 
   --Insert prop
   layer:insertProp(self._prop)
